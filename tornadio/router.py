@@ -164,5 +164,6 @@ def get_router(handler, settings=None, resource='socket.io/*',
        application = tornado.web.Application([PongRouter.route()])
     """
     router = type('SocketRouter', (SocketRouterBase,), {})
-    router.tornadio_initialize(handler, settings, resource, extra_re, extra_sep)
+    router.tornadio_initialize(handler, settings, resource,
+                               extra_re=extra_re, extra_sep=extra_sep)
     return router
