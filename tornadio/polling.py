@@ -311,6 +311,8 @@ class TornadioJSONPSocketHandler(TornadioXHRPollingSocketHandler):
         super(TornadioJSONPSocketHandler, self).post(*args, **kwargs)
 
     def data_available(self, raw_data):
+        if self._index is None:
+            self._index = 0
         message = 'io.JSONP[%s]._(%s);' % (
             self._index,
             json.dumps(raw_data)
